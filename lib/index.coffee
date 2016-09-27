@@ -34,12 +34,13 @@ formatMessage = ({message, cop_name, url}) ->
   formatted_cop_name =
     if cop_name?
       if url?
-        " (<a href=\"#{escapeHtml url}\">#{escapeHtml cop_name}</a>)"
+        "<a href=\"#{escapeHtml url}\" class=\"badge badge-flexible\">\
+         #{escapeHtml cop_name}</a> "
       else
-        " (#{escapeHtml cop_name})"
+        "<span class=\"badge badge-flexible\">#{escapeHtml cop_name}</span> "
     else
       ''
-  formatted_message + formatted_cop_name
+  formatted_cop_name + formatted_message
 
 lint = (editor) ->
   convertOldConfig()
